@@ -1,1 +1,18 @@
-Explain the code execution based on the order of the messages logged in src/quiz/promise-2darray.txt.
+Console output:
+
+Sum called ... // first call to sum2Darray(non-empty array)
+returning from sum // indicates end of sum
+Sum called ... // while timeout is scheduled, main thread executes next line of code
+returning from sum // indicates end of second sum
+Error: Cannot sum an empty array // event loop executes second sum2darray while settimeout callback runs
+                                 // asynchronously. In this case, rejects empty array.
+Adding 1 to sum
+Adding 2 to sum
+Adding 3 to sum
+Adding 4 to sum
+Adding 5 to sum
+Adding 6 to sum
+Adding 7 to sum
+Adding 8 to sum
+Adding 9 to sum // continuation of first sum call
+Result: 45 // first sum call result
